@@ -1,0 +1,76 @@
+{% extends 'index.html' %}
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Heart Attack Risk Prediction</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom futuristic styles */
+        .container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: linear-gradient(135deg, #1e293b, #0f172a);
+            border-radius: 1rem;
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 30px rgba(59, 130, 246, 0.7);
+        }
+        h1 {
+            color: #e2e8f0;
+            font-weight: 700;
+            font-size: 2.5rem;
+            line-height: 1.4;
+            text-align: center;
+            animation: fadeIn 1s ease-in;
+        }
+        h2 {
+            color: #cbd5e1;
+            font-weight: 500;
+            font-size: 1.5rem;
+            line-height: 1.6;
+            text-align: center;
+            margin-top: 1.5rem;
+            animation: fadeIn 1.2s ease-in;
+        }
+        .highlight {
+            color: #60a5fa;
+            font-weight: 600;
+        }
+        .cta-button {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            background: linear-gradient(to right, #3b82f6, #60a5fa);
+            color: white;
+            font-weight: 600;
+            text-decoration: none;
+            transition: transform 0.2s ease, background 0.3s ease;
+        }
+        .cta-button:hover {
+            transform: scale(1.05);
+            background: linear-gradient(to right, #2563eb, #3b82f6);
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-gray-900 min-h-screen">
+    <div class="container">
+        <h1>The Heart: Your Body's Vital Core</h1>
+        <h2>
+            Discover your <span class="highlight">heart health</span> with our advanced prediction tool. This webpage empowers you to assess your heart attack risk using cutting-edge <span class="highlight">machine learning technology</span>, providing insights to support a healthier future.
+        </h2>
+        <p class="text-center">
+            <a href="/heart" class="cta-button">Check Your Heart Health</a>
+        </p>
+    </div>
+</body>
+{% endblock %}

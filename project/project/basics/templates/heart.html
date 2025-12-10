@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Attack Prediction</title>
+    <style>
+        /* Custom futuristic styles */
+        body {
+            background: #0f172a;
+            font-family: 'Arial', sans-serif;
+        }
+        .container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: linear-gradient(135deg, #1e293b, #0f172a);
+            border-radius: 1rem;
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 30px rgba(59, 130, 246, 0.7);
+        }
+        h2 {
+            color: #e2e8f0;
+            font-weight: 700;
+            font-size: 2rem;
+            line-height: 1.5;
+            animation: fadeIn 1s ease-in;
+            text-align: center;
+        }
+        p {
+            color: #cbd5e1;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .highlight {
+            color: #60a5fa;
+            font-weight: 600;
+        }
+        .cta-button {
+            display: inline-block;
+            margin-top: 1.5rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            background: linear-gradient(to right, #3b82f6, #60a5fa);
+            color: white;
+            font-weight: 600;
+            text-decoration: none;
+            border: none;
+            width: 100%;
+            cursor: pointer;
+            transition: transform 0.2s ease, background 0.3s ease;
+            text-align: center;
+        }
+        .cta-button:hover {
+            transform: scale(1.05);
+            background: linear-gradient(to right, #2563eb, #3b82f6);
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        label {
+            color: #e2e8f0;
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        input[type="number"] {
+            width: 100%;
+            padding: 0.75rem;
+            border: none;
+            border-radius: 0.5rem;
+            background: #2d3748;
+            color: #e2e8f0;
+            font-size: 1rem;
+            transition: box-shadow 0.3s ease;
+        }
+        input[type="number"]:focus {
+            outline: none;
+            box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+        }
+        .result {
+            margin-top: 2rem;
+            text-align: center;
+        }
+        .result p {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+        .text-danger {
+            color: #f87171;
+        }
+        .text-success {
+            color: #4ade80;
+        }
+        .return-button {
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Heart Attack Prediction</h2>
+        <form method="POST" action="">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="textAge">Age</label>
+                <input type="number" id="textAge" name="textAge">
+            </div>
+            <div class="form-group">
+                <label for="textSex">Sex (0 = Female, 1 = Male)</label>
+                <input type="number" id="textSex" name="textSex" min="0" max="1" step="1">
+            </div>
+            <div class="form-group">
+                <label for="textChestpain">Chest Pain Type (0-3)</label>
+                <input type="number" id="textChestpain" name="textChestpain" min="0" max="3" step="1">
+            </div>
+            <div class="form-group">
+                <label for="textTrestbps">Resting Blood Pressure (mm Hg)</label>
+                <input type="number" id="textTrestbps" name="textTrestbps">
+            </div>
+            <div class="form-group">
+                <label for="textCholestrol">Cholesterol (mg/dl)</label>
+                <input type="number" id="textCholestrol" name="textCholestrol">
+            </div>
+            <div class="form-group">
+                <label for="textBloodsugar">Fasting Blood Sugar (> 120 mg/dl, 1 = True, 0 = False)</label>
+                <input type="number" id="textBloodsugar" name="textBloodsugar" min="0" max="1" step="1">
+            </div>
+            <div class="form-group">
+                <label for="textRestecg">Resting ECG Results (0-2)</label>
+                <input type="number" id="textRestecg" name="textRestecg" min="0" max="2" step="1">
+            </div>
+            <div class="form-group">
+                <label for="textThalach">Maximum Heart Rate Achieved</label>
+                <input type="number" id="textThalach" name="textThalach">
+            </div>
+            <div class="form-group">
+                <label for="textExang">Exercise Induced Angina (1 = Yes, 0 = No)</label>
+                <input type="number" id="textExang" name="textExang" min="0" max="1" step="1">
+            </div>
+            <div class="form-group">
+                <label for="textOldpeak">ST Depression Induced by Exercise</label>
+                <input type="number" id="textOldpeak" name="textOldpeak" step="0.1">
+            </div>
+            <div class="form-group">
+                <label for="textSlope">Slope of Peak Exercise ST Segment (0-2)</label>
+                <input type="number" id="textSlope" name="textSlope" min="0" max="2" step="1">
+            </div>
+            <div class="form-group">
+                <label for="textCa">Number of Major Vessels (0-3)</label>
+                <input type="number" id="textCa" name="textCa" min="0" max="3" step="1">
+            </div>
+            <div class="form-group">
+                <label for="textThalassemia">Thalassemia (0-3)</label>
+                <input type="number" id="textThalassemia" name="textThalassemia" min="0" max="3" step="1">
+            </div>
+            <button type="submit" name="buttonpredict" class="cta-button">Predict</button>
+        </form>
+        {% if result %}
+            <div class="result">
+                {% if result == "status:1" %}
+                    <p class="text-danger">Prediction: Heart Attack Risk</p>
+                {% elif result == "status:0" %}
+                    <p class="text-success">Prediction: No Heart Attack Risk</p>
+                {% else %}
+                    <p class="text-danger">{{ result }}</p>
+                {% endif %}
+            </div>
+        {% endif %}
+        <a href="{% url 'home' %}" class="cta-button return-button">Return to Home</a>
+    </div>
+</body>
+</html>

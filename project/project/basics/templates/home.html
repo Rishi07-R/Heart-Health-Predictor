@@ -1,0 +1,75 @@
+{% extends 'index.html' %}
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Heart Attack Risk Prediction</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom futuristic styles */
+        .container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: linear-gradient(135deg, #1e293b, #0f172a);
+            border-radius: 1rem;
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 30px rgba(59, 130, 246, 0.7);
+        }
+        h2 {
+            color: #e2e8f0;
+            font-weight: 700;
+            font-size: 2rem;
+            line-height: 1.5;
+            animation: fadeIn 1s ease-in;
+        }
+        p {
+            color: #cbd5e1;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .highlight {
+            color: #60a5fa;
+            font-weight: 600;
+        }
+        .cta-button {
+            display: inline-block;
+            margin-top: 1.5rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            background: linear-gradient(to right, #3b82f6, #60a5fa);
+            color: white;
+            font-weight: 600;
+            text-decoration: none;
+            transition: transform 0.2s ease, background 0.3s ease;
+        }
+        .cta-button:hover {
+            transform: scale(1.05);
+            background: linear-gradient(to right, #2563eb, #3b82f6);
+        }
+    </style>
+</head>
+<body class="bg-gray-900 min-h-screen">
+    <div class="container">
+        <h2 class="text-center">Welcome to Heart Attack Risk Prediction</h2>
+        <p>
+            Heart disease diagnosis remains a significant challenge in medical science, relying on factors such as vascular physical examinations, signs, and symptoms. Key indicators like <span class="highlight">age</span>, <span class="highlight">gender</span>, <span class="highlight">heart rate</span>, and more can help predict the likelihood of heart disease, ultimately reducing mortality rates for heart patients.
+        </p>
+        <p>
+            With advancements in <span class="highlight">technology and data collection</span>, we now leverage machine learning to enhance the accuracy of heart disease predictions. Our platform uses state-of-the-art <span class="highlight">Python-based machine learning models</span> to analyze your health data and provide actionable insights.
+        </p>
+        <p class="text-center">
+            <a href="/heart" class="cta-button">Start Predicting Now</a>
+        </p>
+    </div>
+</body>
+{% endblock %}

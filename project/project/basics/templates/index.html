@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+      *, *::before, *::after {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont, sans-serif;
+        min-height: 100vh;
+        background: hsl(0, 0%, 8%);
+        color: #fff;
+      }
+
+      nav {
+        display: flex;
+        justify-content: flex-start;
+        padding: 20px 40px;
+      }
+
+      ul {
+        display: flex;
+        align-items: center;
+        gap: 1.2rem;
+        list-style: none;
+      }
+
+      .link {
+        text-decoration: none;
+        color: #fff;
+        font-size: 18px;
+        padding: 0.5rem;
+        position: relative;
+      }
+
+      .link::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        background: #fff;
+        border-radius: 5px;
+        transform: scaleX(0);
+        transition: all 0.6s ease;
+        bottom: 0;
+        left: 0;
+      }
+
+      .link:hover::before {
+        transform: scaleX(1);
+      }
+
+      .logo {
+        text-decoration: none;
+        color: #5ec619;
+        font-size: 40px;
+        padding: 0.5rem;
+        position: relative;
+        transition: opacity 0.35s ease;
+      }
+
+      .logo:hover {
+        opacity: 0.5;
+      }
+
+      .footer {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        text-align: center;
+        padding: 1rem;
+        background-color: rgba(0, 0, 0, 0.284);
+      }
+
+      .footer a {
+        color: #fff;
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li>
+          <a href="#" class="logo">
+            <i class="fa-brands fa-pied-piper-alt"></i>
+          </a>
+        </li>
+        <li><a class="nav-link link" href="{% url 'home' %}">Home</a></li>
+        <li><a class="nav-link link" href="{% url 'about' %}">About</a></li>
+        <li><a class="nav-link link" href="{% url 'heart' %}">Checkup</a></li>
+      </ul>
+    </nav>
+    {% block content %}
+    {% endblock %}
+  </body>
+</html>
